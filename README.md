@@ -16,13 +16,17 @@
 
 This is a simple web app that shows coffee shops near you.
 
-<div align="right">([back to top](#readme-top))</div>
+<div align="right">
+  (<a href="#readme-top">Back to top</a>)
+</div>
 
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
-<div align="right">([back to top](#readme-top))</div>
+<div align="right">
+  (<a href="#readme-top">Back to top</a>)
+</div>
 
 ### Prerequisites
 
@@ -49,10 +53,14 @@ To get a local copy up and running follow these simple steps.
   ```
 4. Open [http://localhost:8080](http://localhost:8080) to see the app.
 
-<div align="right">([back to top](#readme-top))</div>
+<div align="right">
+  (<a href="#readme-top">Back to top</a>)
+</div>
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-<div align="right">([back to top](#readme-top))</div>
+<div align="right">
+  (<a href="#readme-top">Back to top</a>)
+</div>
