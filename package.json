@@ -1,0 +1,20 @@
+{
+  "name": "coffe-shops-near-you",
+  "version": "0.0.1",
+  "description": "Shows nearby coffee shops",
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "coffee",
+    "shops",
+    "near",
+    "you",
+    "php",
+    "nginx"
+  ],
+  "author": "Alejandro Suero <asuerome@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "3.4.11"
+  }
+}

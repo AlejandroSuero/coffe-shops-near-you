@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: .docker/nginx/Dockerfile
+    volumes:
+      - ./src:/var/www/html
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    networks:
+      - internal
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    image: php:8.3-fpm-alpine
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - internal
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mariadb:10.6
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: coffeedb
+      MYSQL_USER: coffee
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql:/var/lib/mysql
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
