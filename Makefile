@@ -8,6 +8,20 @@ else
 	GO_FILES=$(shell find . -name "*.go" -and  -not -name ".git")
 endif
 
+ifeq (, $(shell which docker-compose))
+	COMPOSE=docker compose
+else
+	COMPOSE=docker-compose
+endif
+
+ifeq (, $(shell uname -r | grep aws))
+	APP_IP=localhost
+else
+	APP_IP=$(shell curl http://checkip.amazonaws.com)
+endif
+
+PORT=8080
+
 # make the output of the message appear green
 define style_calls
 	$(eval $@_msg = $(1))
@@ -18,21 +32,21 @@ default_target: help
 
 build:
 	@$(call style_calls,"Building docker image")
-	@docker compose build
+	@$(COMPOSE) build
 	@$(call style_calls,"Done")
 .PHONY: docker-build
 
 run: build
 	@$(call style_calls,"Running docker image")
-	@docker compose up -d
+	@$(COMPOSE) up -d
 	@$(call style_calls,"Done ✅")
 	@echo ""
-	@$(call style_calls,"App is running at http://localhost:8080")
+	@$(call style_calls,"App is running at http://${APP_IP}:${PORT}")
 .PHONY: run
 
 stop:
 	@$(call style_calls,"Stopping docker image")
-	@docker compose down
+	@$(COMPOSE) down
 	@$(call style_calls,"Done ✅")
 .PHONY: stop
 
